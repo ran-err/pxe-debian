@@ -1,0 +1,49 @@
+PATH lib/
+UI menu.c32
+DEFAULT debauto
+TIMEOUT 30
+# TOTALTIMEOUT 100
+
+MENU TITLE Huzhou Univresity GNU/Linux Installer Menu (BIOS Mode)
+
+LABEL auto
+ MENU LABEL Auto Installation
+ MENU DISABLE
+
+LABEL debauto
+ MENU LABEL Debian Installation (Auto)
+ KERNEL http://172.20.137.118/debian11/linux
+ INITRD http://172.20.137.118/debian11/initrd.gz
+ APPEND auto=true priority=critical interface=enp0s3 netcfg/dhcp_timeout=60 netcfg/hostname=fakehostname url=http://172.20.137.118/preseed-vm-20220501.cfg vga=788 --- quiet
+# other interfaces will be unavailable when boot
+# netcfg/dhcp_timeout string 60
+
+MENU SEPARATOR
+
+LABEL manual
+ MENU LABEL Manual Installation
+ MENU DISABLE
+
+LABEL deb
+ MENU LABEL Debian Installation (Manual)
+ KERNEL http://172.20.137.118/debian11/linux
+ INITRD http://172.20.137.118/debian11/initrd.gz
+# KERNEL debian-installer/amd64/linux
+# INITRD debian-installer/amd64/initrd.gz
+ APPEND vga=788 --- quiet
+# vga is important
+
+LABEL debrsq
+ MENU LABEL Debian Rescue Mode
+ KERNEL http://172.20.137.118/debian11/linux
+ INITRD http://172.20.137.118/debian11/initrd.gz
+ APPEND vga=788 rescue/enable=true --- quiet
+
+MENU SEPARATOR
+
+LABEL help
+ MENU LABEL SHUTDOWN NOW IF YOU ARE CONFUSED ABOUT THIS PAGE !!!
+ MENU DISABLE
+
+MENU TABMSG Press [ENTER] to boot or [TAB] to edit a menu entry
+

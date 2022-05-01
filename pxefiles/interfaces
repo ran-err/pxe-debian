@@ -1,0 +1,28 @@
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+source /etc/network/interfaces.d/*
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+# VM interface
+auto enp0s3
+iface enp0s3 inet static
+	address 172.20.137.1fakenodeid/24
+	gateway 172.20.137.1
+	dns-servers 8.8.8.8
+
+auto enp0s8
+iface enp0s8 inet static
+	address 12.12.12.1fakenodeid/24
+
+auto enp0s9
+iface enp0s9 inet static
+	address 13.13.13.1fakenodeid/24
+
+auto enp0s10
+iface enp0s10 inet static
+	address 192.168.56.1fakenodeid/24
+
